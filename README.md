@@ -7,7 +7,7 @@ State-of-the-art development boilerplate, with all the set-up done for you :)
 
 1. Clone the git repo — `git clone https://github.com/jsa41394/Front-End-Tools`;
 2. Install dependences - `npm install`;
-3. Enjoy!
+3. `gulp` and enjoy!
 
 ## Features
 
