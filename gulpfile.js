@@ -9,7 +9,10 @@ var gulp        = require('gulp'),
 	sass        = require('gulp-sass'),
 	path        = require('path'),
 	livereload  = require('gulp-livereload'),
-	browserSync = require('browser-sync');
+	browserSync = require('browser-sync'),
+	babel = require('gulp-babel'),
+	webpackStream = require('webpack-stream'),
+	webpackConfig = require(__dirname+'\\webpack.config.js');
 
 // Handle less error
 var onError = function (err) {
@@ -21,6 +24,7 @@ var onError = function (err) {
 var css_files  = 'assets/css/*.css', // .css files
 	css_path   = 'assets/css', // .css path
 	js_files   = 'assets/js/*.js', // .js files
+	jsx_files   = 'assets/jsx/*.jsx', // .jsx files
 	sass_file  = 'assets/scss/style.scss', // .scss files
 	dist_path  = 'assets/dist';
 
@@ -36,6 +40,38 @@ function js() {
 			}))
 			.pipe(concat('dist'))
 			.pipe(rename('concat.min.js'))
+			.pipe(uglify())
+			.pipe(gulp.dest(dist_path))
+			.pipe(livereload());
+}
+
+function jsx() {
+	return gulp.src(jsx_files)
+			.pipe(plumber({
+				errorHandler: onError
+			}))
+			.pipe(concat('dist'))
+			.pipe(babel({
+	            presets: ['react']
+	        }))
+			.pipe(rename('concatx.min.js'))
+			.pipe(uglify())
+			.pipe(gulp.dest(dist_path))
+			.pipe(livereload());
+}
+
+function jsx2() {
+	return gulp.src(jsx_files)
+			.pipe(plumber({
+				errorHandler: onError
+			}))
+			.pipe(concat('dist'))
+			.pipe(rename('concatx.min.js'))
+			//.pipe(babel())
+			//.pipe(webpackStream(webpackConfig))
+			.pipe(babel({
+	            presets: ['es2015']
+	        }))
 			.pipe(uglify())
 			.pipe(gulp.dest(dist_path))
 			.pipe(livereload());
@@ -85,6 +121,11 @@ gulp.task('js', function() {
 	return js();
 });
 
+// The 'jsx' task
+gulp.task('jsx', function() {
+	return jsx();
+});
+
 // The 'css' task
 gulp.task('css', function(){
 	return css();
@@ -109,8 +150,6 @@ gulp.task('default', function() {
 		server: {
 			baseDir: "./"
 		}
-
-		//proxy: "localhost/html-skeleton-gulp/"
 	});
 
 	gulp.watch('*.' + extension, function(){
@@ -132,6 +171,12 @@ gulp.task('default', function() {
 		console.log('JS task completed!');
 		browserSync.reload();
 		return js();
+	});
+
+	gulp.watch(jsx_files, function() {
+		console.log('JSX task completed!');
+		browserSync.reload();
+		return jsx();
 	});
 
 	gulp.watch('*.' + extension, function(){

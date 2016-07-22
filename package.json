@@ -1,12 +1,13 @@
 {
   "name": "html-skeleton-gulp",
   "version": "0.0.1",
-  "description": "A base to start your front-end project using Gulpjs",
-  "homepage": "http://samweb.com.br",
+  "description": "Gulpjs, JavaScript, React JSX, CSS, Sass",
+  "homepage": "https://github.com/jsa41394/Front-End-Tools",
   "repository": {
     "type": "git",
-    "url": "http://github.com/samwx/html-skeleton-gulp"
+    "url": "https://github.com/jsa41394/Front-End-Tools"
   },
+  "license":"MIT",
   "engines": {
     "node": "0.8.x",
     "npm": "1.1.x"
@@ -22,5 +23,10 @@
     "gulp-sass": "^2.0.0",
     "gulp-plumber": ">=0.5.6",
     "browser-sync": "^1.5.2"
+  },
+  "dependencies": {
+    "babel-preset-react": "^6.11.1",
+    "gulp-babel": "^6.1.2",
+    "webpack-stream": "^3.2.0"
   }
 }
