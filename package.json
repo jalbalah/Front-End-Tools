@@ -7,7 +7,7 @@
     "type": "git",
     "url": "https://github.com/jsa41394/Front-End-Tools"
   },
-  "license":"MIT",
+  "license": "MIT",
   "engines": {
     "node": "0.8.x",
     "npm": "1.1.x"
@@ -25,8 +25,10 @@
     "browser-sync": "^1.5.2"
   },
   "dependencies": {
+    "babel-loader": "^6.2.4",
     "babel-preset-react": "^6.11.1",
     "gulp-babel": "^6.1.2",
+    "webpack": "^1.13.1",
     "webpack-stream": "^3.2.0"
   }
 }

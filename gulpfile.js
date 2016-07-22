@@ -54,24 +54,8 @@ function jsx() {
 			.pipe(babel({
 	            presets: ['react']
 	        }))
+	        //.pipe(webpackStream(webpackConfig))
 			.pipe(rename('concatx.min.js'))
-			.pipe(uglify())
-			.pipe(gulp.dest(dist_path))
-			.pipe(livereload());
-}
-
-function jsx2() {
-	return gulp.src(jsx_files)
-			.pipe(plumber({
-				errorHandler: onError
-			}))
-			.pipe(concat('dist'))
-			.pipe(rename('concatx.min.js'))
-			//.pipe(babel())
-			//.pipe(webpackStream(webpackConfig))
-			.pipe(babel({
-	            presets: ['es2015']
-	        }))
 			.pipe(uglify())
 			.pipe(gulp.dest(dist_path))
 			.pipe(livereload());

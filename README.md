@@ -1,4 +1,5 @@
-# Front-End-Tools: GulpJS, Live Reload, JavaScript, ReactJSX, CSS and Sass
+# Front-End-Tools: 
+GulpJS, Live Reload, JavaScript, ReactJSX, CSS and Sass
 
 State-of-the-art development boilerplate, with all the set-up done for you :)
 
