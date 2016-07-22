@@ -2,11 +2,11 @@ var NewDOMTag = React.createClass({
   render: function(){
     return(
       <div>
-        Hello World 
+        Hello World
       </div>
     );
   }
-}); 
+});
 ReactDOM.render(
   <div>
     Welcome<br/>

@@ -10,9 +10,9 @@ var gulp        = require('gulp'),
 	path        = require('path'),
 	livereload  = require('gulp-livereload'),
 	browserSync = require('browser-sync'),
-	babel = require('gulp-babel'),
-	webpackStream = require('webpack-stream'),
-	webpackConfig = require(__dirname+'\\webpack.config.js');
+	babel = require('gulp-babel');
+//var	webpackStream = require('webpack-stream'),
+//	webpackConfig = require(__dirname+'\\webpack.config.js');
 
 // Handle less error
 var onError = function (err) {
@@ -54,9 +54,9 @@ function jsx() {
 			.pipe(babel({
 	            presets: ['react']
 	        }))
+	        .pipe(rename('bundle.min.js')) // see webpack.config.js file
 	        //.pipe(webpackStream(webpackConfig))
-			.pipe(rename('concatx.min.js'))
-			.pipe(uglify())
+	        .pipe(uglify())
 			.pipe(gulp.dest(dist_path))
 			.pipe(livereload());
 }
